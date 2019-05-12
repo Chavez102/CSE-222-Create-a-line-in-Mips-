@@ -19,10 +19,10 @@ public class Main {
 		String star="*";
 		String space="n";
 		
-		double x1=2;
-		double y1=1;
+		double x1=5;
+		double y1=5;
 		
-		double x2=8;
+		double x2=9;
 		double y2=4;
 		
 		double m= (y2-y1)/(x2-x1);
