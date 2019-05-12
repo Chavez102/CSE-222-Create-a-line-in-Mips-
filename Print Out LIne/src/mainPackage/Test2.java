@@ -1,36 +1,42 @@
 package mainPackage;
 
 public class Test2 {
-
+	 int[] theRaster=new int[400];	
+	
     public static int[] Xarray=new int[25];
     public static int[] Yarray=new int[25];
+    static int realx;
+	static int realy;
+	static double dx;
+	static double dy;
+	static double P;
+	static int index=0;
     
     
     
     public static void main (String[] args) 
     { 
-    	AlgorithmBress(3, 15, 2, 5);
+    	   int height=25;
     	
-    	
-    	
+    	for(int t=0;t<25;t++)
+    	{
+    		Xarray[t]=100;
+    		Yarray[t]=100;
+    	}
+    	// x1, x2, y1, y2
+    	AlgorithmBress(2, 10, 1, 6);
 
-    	
-    	
-    	
-    	
-    	
-    	
-        int x1 = 3, y1 = 2, x2 = 15, y2 = 5;    
         
         boolean printIt=false;
+     
 
-       for(int columns=0;columns<25;columns++)
+       for(int columns=height-1;columns>=0;columns--)
        {
-    	   for(int rows=0;rows<25;rows++)
+    	   for(int rows=0;rows<height;rows++)
     	   {
     		   
  //   			   System.out.print("x ");
-    		   for(int insiderow=0;insiderow<25;insiderow++)
+    		   for(int insiderow=0;insiderow<height;insiderow++)
     	       {
     	    	 
     	    	
@@ -38,7 +44,11 @@ public class Test2 {
     	    		   if(rows==Xarray[insiderow]&&columns==Yarray[insiderow])
     	    		   {
     	    			  printIt=true;
-    	    			//  break;
+    	    			  break;
+    	    		   }
+    	    		   else
+    	    		   {
+    	    			   printIt=false;
     	    		   }
     	    		 
     	    	   
@@ -62,27 +72,27 @@ public class Test2 {
        
        
        	//print out cordinates of line   
-//   	int index=0;
-//   
-//   		for(int y=0;y<25;y++)
-//       	{
-//       		System.out.println("("+Xarray[y]+","+Yarray[y]+")");
-//   			
-//   			
-//       	}
+   	int index=0;
+   
+   		for(int y=0;y<25;y++)
+       	{
+       		System.out.println("("+Xarray[y]+","+Yarray[y]+")");
+   			
+   			
+       	}
        
        
        
     }
     
-    
+    //USE FOR SLOPE LESS THAN 1      
     static void AlgorithmBress(int x1,double x2,int y1,double y2) {
-    	int realx=x1;
-    	int realy=y1;
-    	double dx=x2-x1;
-    	double dy=y2-y1;
-    	double P=(2*dy)-dx;
-    	int index=0;
+    	 realx=x1;
+    	 realy=y1;
+    	 dx=x2-x1;
+    	 dy=y2-y1;
+    	 P=(2*dy)-dx;
+    	 index=0;
     	 
     	while(realx<=x2) {
 //    		System.out.println("("+realx+","+realy+")");
@@ -104,13 +114,12 @@ public class Test2 {
     		}
     	}
     	
-    	
-    	
-    	
-    	
-    	
     }
     
+
+
+
+ 
 } 
 
 
