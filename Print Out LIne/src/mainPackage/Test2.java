@@ -6,37 +6,48 @@ public class Test2 {
     public static int[] Xarray=new int[25];
     public static int[] Yarray=new int[25];
     static int realx;
+    static double x2;
 	static int realy;
 	static double dx;
 	static double dy;
 	static double P;
+	static double y1;
+	static double y2;
 	static int index=0;
-    
-    
+	static int t;
+	
+	static int columns;
+    static int rows;
+    static int insiderow;
     
     public static void main (String[] args) 
     { 
     	   int height=25;
     	
-    	for(int t=0;t<25;t++)
+    	for(t=0;t<25;t++)
     	{
     		Xarray[t]=100;
     		Yarray[t]=100;
     	}
     	// x1, x2, y1, y2
-    	AlgorithmBress(2, 10, 1, 6);
+    	
+    	realx=2;
+    	x2=10;
+    	realy=1;
+    	y2=6;
+    	AlgorithmBress();
 
         
         boolean printIt=false;
      
 
-       for(int columns=height-1;columns>=0;columns--)
+       for(columns=height-1;columns>=0;columns--)
        {
-    	   for(int rows=0;rows<height;rows++)
+    	   for( rows=0;rows<height;rows++)
     	   {
     		   
  //   			   System.out.print("x ");
-    		   for(int insiderow=0;insiderow<height;insiderow++)
+    		   for( insiderow=0;insiderow<height;insiderow++)
     	       {
     	    	 
     	    	
@@ -44,12 +55,8 @@ public class Test2 {
     	    		   if(rows==Xarray[insiderow]&&columns==Yarray[insiderow])
     	    		   {
     	    			  printIt=true;
-    	    			  break;
     	    		   }
-    	    		   else
-    	    		   {
-    	    			   printIt=false;
-    	    		   }
+
     	    		 
     	    	   
     	      }
@@ -80,16 +87,13 @@ public class Test2 {
    			
    			
        	}
-       
-       
-       
     }
     
     //USE FOR SLOPE LESS THAN 1      
-    static void AlgorithmBress(int x1,double x2,int y1,double y2) {
-    	 realx=x1;
-    	 realy=y1;
-    	 dx=x2-x1;
+    static void AlgorithmBress() {
+    	 
+
+    	 dx=x2-realx;
     	 dy=y2-y1;
     	 P=(2*dy)-dx;
     	 index=0;

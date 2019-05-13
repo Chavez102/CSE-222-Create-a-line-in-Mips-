@@ -1,66 +1,132 @@
 package mainPackage;
 
-import java.util.Scanner;
-
 public class Main {
+	 int[] theRaster=new int[400];	
+	
+    public static int[] Xarray=new int[25];
+    public static int[] Yarray=new int[25];
+    static int realx;
+    static double x2;
+	static int realy;
+	static double dx;
+	static double dy;
+	static double P;
+	static double y1;
+	static double y2;
+	static int index=0;
+	static int t;
+	
+	static int columns;
+    static int rows;
+    static int insiderow;
+    
+    public static int height=25;
+    
+    public static void main (String[] args) 
+    { 
+    	   
+    	
+    	for(t=0;t<25;t++)
+    	{
+    		Xarray[t]=100;
+    		Yarray[t]=100;
+    	}
+    	// x1, x2, y1, y2
+    	
+    	realx=2;
+    	x2=10;
+    	realy=1;
+    	y2=6;
+    	AlgorithmBress();
 
-	public static void main(String[] args) {
-//		Scanner Keyboard=new Scanner(System.in);
-//		System.out.print("what is x1 y1");
-//		
-//		int x1=Keyboard.nextInt();
-//		int y1=Keyboard.nextInt();
-//		
-//		
-//		System.out.print("what is x2 y2");
-//		
-//		int x2=Keyboard.nextInt();
-//		int y2=Keyboard.nextInt();
-		String star="*";
-		String space="n";
-		
-		double x1=5;
-		double y1=5;
-		
-		double x2=9;
-		double y2=4;
-		
-		double m= (y2-y1)/(x2-x1);
-		
-		
-		double b=y1-(m*x1);
-		
-		
-		
-		
-		int biggest_x=50;
-		int biggest_y=50;
+        
+        boolean printIt=false;
+     
 
-		for(int y=0;y<biggest_y;y++)
-		{
-			for(int x=1;x<=biggest_x;x++)
-			{
-				int	yvalue=(int) (m*x+b);
-				int xvalue=(int)(yvalue-b)/x;
-				if (yvalue==y&&xvalue==x)
-				{
-					System.out.print(star);
-				}
-				else
-				{
-					System.out.println("xvalue"+x+" yvalue:"+yvalue);
-					//System.out.print(space);
-				}
-				
-				
-			}
-			System.out.println();
-			
-		}
+       for(columns=height-1;columns>=0;columns--)
+       {
+    	   for( rows=0;rows<height;rows++)
+    	   {
+    		   
+ //   			   System.out.print("x ");
+    		   for( insiderow=0;insiderow<height;insiderow++)
+    	       {
+    	    	 
+    	    	
+    	    		   
+    	    		   if(rows==Xarray[insiderow]&&columns==Yarray[insiderow])
+    	    		   {
+    	    			  printIt=true;
+    	    		   }
 
-		
-		
+    	    		 
+    	    	   
+    	      }
+    		   
+    		   
+    		   if(printIt)
+    		   {
+    			   System.out.print(" x");
+    		   }
+    		   else {
+   	    		
+    			   System.out.print(" _");
+    		   }
+    		   printIt=false;
+    		   
+    		   
+    	   }
+    	   System.out.println();
+       }
+    }
+       
+       
+       	//print out cordinates of line   
+//   	int index=0;
+//   
+//   		for(int y=0;y<25;y++)
+//       	{
+//       		System.out.println("("+Xarray[y]+","+Yarray[y]+")");
+//   			
+//   			
+//       	}
+//    }
+    
+    //USE FOR SLOPE LESS THAN 1      
+    static void AlgorithmBress() {
+    	 
 
-	}
+    	 dx=x2-realx;
+    	 dy=y2-y1;
+    	 P=(2*dy)-dx;
+    	 index=0;
+    	 
+    	while(realx<=x2) {
+//    		System.out.println("("+realx+","+realy+")");
+    		
+    		Xarray[index]=realx;
+    		Yarray[index]=realy;
+    		index++;
+    		
+    		
+    		realx++;
+    		if(P<0) {
+    			P=P+(2*dy);
+    			
+    		}
+    		else
+    		{
+    			P=P+(2*dy)-(2*dx);
+    			realy++;
+    		}
+    	}
+    	
+    }
+    
 
-}
+
+
+ 
+} 
+
+
