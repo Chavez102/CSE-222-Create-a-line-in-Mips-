@@ -8,6 +8,10 @@
 	AskX2: .asciiz "What is x position of Point2 \n"
 	AskY2: .asciiz "What is y position of Point2 \n"
 	newline: .asciiz "\n"
+	
+	false: .asciiz "false \n"
+	true: .ascii  "true \n"
+	
 	coma: .asciiz ","
 	zeroDouble: .double 0.0
 	twoDouble: .double 2.0
@@ -19,10 +23,8 @@
 		jal AskforPoint1  #x1=$t0  y1=$t1
 		jal AskforPoint2  #x2=$t2  y2=$t3
 		
-		
-		
-	addi $s0,$zero,100
-	addi $t4,$zero,0		# t=index=$t4
+		addi $s0,$zero,100
+		addi $t4,$zero,0		# t=index=$t4
 
 
 	
@@ -114,23 +116,30 @@
 				j LineScanConversionFunc
 	
 	IfPlessThanZero:
-		
+		jal printtrue
 		mul.d $f10,$f6,$f2		#2*dy
 		add.d $f4,$f4,$f10		#P=P+(2*dy)
+		
 		div.d $f10,$f10,$f2			#f10/f2=> Original
+		
 		
 	   	#end of method
 		j comeback
 	
 	
 	IfPisEqualorGreaterthanZero:
+		jal printfalse
+	
+	
 		#p=p+(2*dy)-(2*dx)
 		mul.d $f10,$f6,$f2   #$f10=dy*2
 		mul.d $f8,$f8,$f2	 #f8=dx*2
 		sub.d $f2,$f10,$f8	 #$f2=$f10-$f8
 		add.d $f4,$f4,$f2      #p=p+(2*dy)-(2*dx)
-		ldc1 $f2,twoDouble		#f2=2.0
-		div.d $f10,$f10,$f2			#f10/f2=> Ori
+		
+		ldc1 $f2,twoDouble		#f2=2.0=>original
+		div.d $f10,$f10,$f2			#f10/f2=> Original
+		div.d $f8,$f8,$f2
 		
 	
 		#realy++;
@@ -202,8 +211,23 @@
 	
 	
 	
-	
-	
+	printtrue:
+		li $v0,4
+		la $a0,true
+		syscall
+	   	
+	   	#end of method
+		jr $ra
+		
+	printfalse:
+		li $v0,4
+		la $a0,false
+		syscall
+	   	
+	   	#end of method
+		jr $ra
+		
+		
 	
 	
 	

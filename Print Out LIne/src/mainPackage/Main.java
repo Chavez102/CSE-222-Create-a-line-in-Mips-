@@ -120,10 +120,10 @@ public class Main {
     
     //USE FOR SLOPE LESS THAN 1      
     static void AlgorithmBress() {
-    	 
+    	 System.out.println("-----------------");
     	 
     		while(realx<x2+1) {
-    		
+    		System.out.println("p="+P);
     		Xarray[index]=realx;
     		Yarray[index]=realy;
     		index++;
@@ -132,13 +132,15 @@ public class Main {
     		realx++;
     		if(P<0) {
     			P=P+(2*dy);
-    			
+    			System.out.print("true");
     		}
     		else
     		{
     			P=P+(2*dy)-(2*dx);
     			realy++;
+    			System.out.print("false");
     		}
+    		
     	}
     	
     }
