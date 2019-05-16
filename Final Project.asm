@@ -9,6 +9,11 @@
 	AskY2: .asciiz "What is y position of Point2 \n"
 	newline: .asciiz "\n"
 	
+	
+	star: .asciiz "x "
+	dash: .asciiz "_ "
+	
+	
 	false: .asciiz "false \n"
 	true: .ascii  "true \n"
 	
@@ -155,8 +160,6 @@
 	
 	
 	
-	
-	
 	printArray:
 	
 		addi $t4,$zero,0
@@ -182,21 +185,93 @@
 			jal printnewline
 		
 			j ArrayPrinting
+			
 		
 	BackfromPrinting:
+#######################################################
+		addi $s1,$zero,1		#use for true=1
+		addi $t3,$zero,0		#$PrintIt=false; 
+		addi $t4,$zero,24		#$t4= columns=24
+		addi $t2,$zero,0		#$t2= rows=0
+		addi $t7,$zero,0         #$t7=insiderow=0
+		addi $t1,$zero,0		#$t1=index=0
+		
+		
+	GraphPrinting:
+			blt $t4,$zero,EndOfGraphPrinting
+			firstinsideloop:
+				bgt $t2,25,continuelooop
+			#	jal printstar
+# for( insiderow=0;insiderow<height;insiderow++)
+						insideloop:
+							bgt $t7,25,endinsideloop
+
+								lw $t5,Xarray($t1)
+								lw $t6,Yarray($t1)
+								
+							#if STATEMENT
+								beq $t2,$t5,RowsEqualXarray			#rows==Xarray[index]
+								bne $t2,$t5,NotEqual
+								
+								RowsEqualXarray:
+								beq $t4,$t6,RowsandColumnsEqual		#colums==Yarra
+								bne $t4,$t6,NotEqual
+								
 	
-	
-	
-	
-	
-	
-	
+								RowsandColumnsEqual:
+								addi $t3,$zero,1		#s PrintIt=tru
+							
+								NotEqual:
+								
+							addi $t7,$t7,1
+							addi $t1,$t1,4			#index=index+4
+							
+							j insideloop
+						endinsideloop:
+		#end of insideloop
+		
+				beq $t3,$s1,PrintItisTrue
+				bne $t3,$s1,else
+				PrintItisTrue:
+					jal printstar
+					beq $t3,$s1,keepgoing
+					
+				else:
+					jal printdash
+				keepgoing:
+						addi $t3,$zero,0         #reset PrintIT to false
+						addi $t7,$zero,0		#reset insiderow
+						addi $t1,$zero,0		#reset index
+				addi $t2,$t2,1
+						
+				j firstinsideloop
+			
+			continuelooop:
+		
+			
+			
+			
+			
+			
+			
+			addi $t2,$zero,0		#$t2= rows=0   RESET
+			jal printnewline
+			subi $t4,$t4,1
+			
+			j GraphPrinting
+#############################################			
+		EndOfGraphPrinting:
+		
+		
+				
 	
 	
 
 	#end of main
 	li $v0,10
 	syscall
+
+	
 
 	
 	
@@ -228,6 +303,30 @@
 		jr $ra
 		
 		
+		
+	printdash:
+		li $v0,4
+		la $a0,dash
+		syscall
+	   	
+	   	#end of method
+		jr $ra
+	
+		
+		
+		
+		
+	printstar:
+		li $v0,4
+		la $a0,star
+		syscall
+	   	
+	   	#end of method
+		jr $ra
+	
+	
+	
+	
 	
 	
 	
@@ -241,6 +340,9 @@
 	
 	
 	
+	
+	
+	
 	printnewline:
 		li $v0,4
 		la $a0,newline
@@ -248,6 +350,10 @@
 	   	
 	   	#end of method
 		jr $ra
+	
+	
+	
+	
 	
 	
 	

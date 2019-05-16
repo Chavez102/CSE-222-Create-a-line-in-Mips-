@@ -77,32 +77,31 @@ public class Main {
     	   for( rows=0;rows<height;rows++)
     	   {
     		   
- //   			   System.out.print("x ");
-    		   for( insiderow=0;insiderow<height;insiderow++)
-    	       {
-    	    	 
-    	    	
-    	    		   
-    	    		   if(rows==Xarray[insiderow]&&columns==Yarray[insiderow])
-    	    		   {
-    	    			  printIt=true;
-    	    		   }
-
-    	    		 
-    	    	   
-    	      }
-    		   
-    		   
-    		   if(printIt)
-    		   {
-    			   System.out.print(" x");
-    		   }
-    		   else {
-   	    		
-    			   System.out.print(" _");
-    		   }
+    			   System.out.print("x ");
+//    		   for( insiderow=0;insiderow<height;insiderow++)
+//    	       {
+//    	    	 
+//    	    	
+//    	    		   
+//    	    		   if(rows==Xarray[insiderow]&&columns==Yarray[insiderow])
+//    	    		   {
+//    	    			  printIt=true;
+//    	    		   }
+//
+//    	    		 
+//    	    	   
+//    	      }
+//    		   
+//    		   
+//    		   if(printIt)
+//    		   {
+//    			   System.out.print(" x");
+//    		   }
+//    		   else {
+//   	    		
+//    			   System.out.print(" _");
+//    		   }
     		   printIt=false;
-    		   
     		   
     	   }
     	   System.out.println();
