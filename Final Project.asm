@@ -62,23 +62,7 @@
 		add  $t4,$zero,$t4
 
 
-			#print dx
-			li $v0,1
-			addi $a0,$t5,0
-			syscall
-			jal printnewline
-
-			#print dy
-			li $v0,1
-			addi $a0,$t6,0
-			syscall
-			jal printnewline
-			
-			#print P
-			li $v0,3
-			add.d  $f12,$f4,$f0
-			syscall
-			jal printnewline
+	
 
 
 	
@@ -121,7 +105,7 @@
 				j LineScanConversionFunc
 	
 	IfPlessThanZero:
-		jal printtrue
+		#jal printtrue
 		mul.d $f10,$f6,$f2		#2*dy
 		add.d $f4,$f4,$f10		#P=P+(2*dy)
 		
@@ -133,7 +117,7 @@
 	
 	
 	IfPisEqualorGreaterthanZero:
-		jal printfalse
+		#jal printfalse
 	
 	
 		#p=p+(2*dy)-(2*dx)
@@ -163,28 +147,7 @@
 	printArray:
 	
 		addi $t4,$zero,0
-		ArrayPrinting:
-			bgt $t4,100,BackfromPrinting
-			
-			lw $t5,Xarray($t4)
-			lw $t6,Yarray($t4)
-			
-			addi $t4,$t4,4
-		
-			#printx
-			li $v0,1
-			addi $a0,$t5,0
-			syscall
-		
-			jal printcoma
-			
-			#printy
-			li $v0,1
-			addi $a0,$t6,0
-			syscall
-			jal printnewline
-		
-			j ArrayPrinting
+	
 			
 		
 	BackfromPrinting:

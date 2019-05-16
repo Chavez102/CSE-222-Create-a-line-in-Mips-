@@ -46,26 +46,14 @@ public class Main {
    	 dy=y2-realy;
    	 P=(2*dy)-dx;
    	 index=0;
-   	 
-   	System.out.println("dx:"+dx);
-   	System.out.println("dy:"+dy);
-   	System.out.println("P:"+P);
-   	System.out.println("index:"+index);
-   	
+
 	
    	
    	
     	AlgorithmBress();
 
     	
-    	
-    	for(int y=0;y<25;y++)
-      	{
-      		System.out.println("("+Xarray[y]+","+Yarray[y]+")");
-  			
-  			
-      	}
-    	
+
     	
     	
         
@@ -77,30 +65,24 @@ public class Main {
     	   for( rows=0;rows<height;rows++)
     	   {
     		   
-    			   System.out.print("x ");
-//    		   for( insiderow=0;insiderow<height;insiderow++)
-//    	       {
-//    	    	 
-//    	    	
-//    	    		   
-//    	    		   if(rows==Xarray[insiderow]&&columns==Yarray[insiderow])
-//    	    		   {
-//    	    			  printIt=true;
-//    	    		   }
-//
-//    	    		 
-//    	    	   
-//    	      }
-//    		   
-//    		   
-//    		   if(printIt)
-//    		   {
-//    			   System.out.print(" x");
-//    		   }
-//    		   else {
-//   	    		
-//    			   System.out.print(" _");
-//    		   }
+//    			   System.out.print("x ");
+    		   for( insiderow=0;insiderow<height;insiderow++)
+    	       {
+    			   
+    			   
+    	    		   if(rows==Xarray[insiderow]&&columns==Yarray[insiderow])
+    	    		   {
+    	    			  printIt=true;
+    	    		   }
+    	      }
+    		   if(printIt)
+    		   {
+    			   System.out.print(" x");
+    		   }
+    		   else {
+   	    		
+    			   System.out.print(" _");
+    		   }
     		   printIt=false;
     		   
     	   }
@@ -119,10 +101,10 @@ public class Main {
     
     //USE FOR SLOPE LESS THAN 1      
     static void AlgorithmBress() {
-    	 System.out.println("-----------------");
+    	
     	 
     		while(realx<x2+1) {
-    		System.out.println("p="+P);
+    	
     		Xarray[index]=realx;
     		Yarray[index]=realy;
     		index++;
@@ -131,13 +113,13 @@ public class Main {
     		realx++;
     		if(P<0) {
     			P=P+(2*dy);
-    			System.out.print("true");
+    		
     		}
     		else
     		{
     			P=P+(2*dy)-(2*dx);
     			realy++;
-    			System.out.print("false");
+    		
     		}
     		
     	}
